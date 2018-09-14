@@ -6,10 +6,17 @@ namespace Component
     [ExecuteInEditMode]
     public class CanvasAdjuster : MonoBehaviour
     {
+        public enum CanvasScaleMatchMode
+        {
+            SCREEN_BOTH,
+            SCREEN_WIDTH,
+            SCREEN_HEIGHT,
+        }
+
         public float screenWidth = 1280f;
         public float screenHeight = 720f;
-        public bool scaleMatchWidth = false;
-        public bool scaleMatchHeight = false;
+
+        [SerializeField] private CanvasScaleMatchMode scaleMatchMode_ = CanvasScaleMatchMode.SCREEN_BOTH;
 
         private void Awake()
         {
@@ -20,17 +27,17 @@ namespace Component
             Rect rect = GetComponent<RectTransform>().rect;
             float screenRatio = scaler.referenceResolution.y / scaler.referenceResolution.x;
 
-            if (scaleMatchWidth && scaleMatchHeight)
+            switch(scaleMatchMode_)
             {
-                scaler.matchWidthOrHeight = 0.5f;
-            }
-            else if (scaleMatchWidth) 
-            {
-                scaler.matchWidthOrHeight = ((rect.height / rect.width) < screenRatio) ? 0 : 1;
-            }
-            else if (scaleMatchHeight)
-            {
-                scaler.matchWidthOrHeight = ((rect.height / rect.width) < screenRatio) ? 1 : 0;
+                case CanvasScaleMatchMode.SCREEN_BOTH:
+                    scaler.matchWidthOrHeight = 0.5f;
+                    break;
+                case CanvasScaleMatchMode.SCREEN_WIDTH:
+                    scaler.matchWidthOrHeight = ((rect.height / rect.width) < screenRatio) ? 0 : 1;
+                    break;
+                case CanvasScaleMatchMode.SCREEN_HEIGHT:
+                    scaler.matchWidthOrHeight = ((rect.height / rect.width) < screenRatio) ? 1 : 0;
+                    break;
             }
         }
     }
