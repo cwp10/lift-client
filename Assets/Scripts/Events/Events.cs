@@ -6,7 +6,9 @@
 
     public enum Lobby
     {
-
+        UPDATE_FLOOR,
+        BEGIN_ELEVATOR,
+        END_ELEVATOR,
     }
 }
 
