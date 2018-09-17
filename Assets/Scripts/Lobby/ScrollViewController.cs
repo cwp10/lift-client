@@ -38,7 +38,7 @@ public class ScrollViewController : MonoBehaviour
     private void Start()
     {
         UpdateView();
-        UpdateFloor(_gridLayoutGrop.transform.childCount, 0);
+        UpdateFloor(_gridLayoutGrop.transform.childCount - 1, 0);
     }
 
     private void Update()
@@ -75,7 +75,7 @@ public class ScrollViewController : MonoBehaviour
     }
 
     private void UpdateFloor(int floorIndex, float time)
-    {    
+    {   
         float height = _gridLayoutGrop.cellSize.y + _gridLayoutGrop.spacing.y;
         float destY = floorIndex * height;
 
