@@ -4,7 +4,7 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
 [RequireComponent(typeof(ScrollRect))]
-public class ScrollViewController : MonoBehaviour
+public class Building : MonoBehaviour
 {
     private ScrollRect _scrollRect = null;
     private RectTransform _rectTransform = null;
@@ -27,18 +27,18 @@ public class ScrollViewController : MonoBehaviour
     private void OnEnable()
     {
         _scene = SceneDirector.Instance.CurrentScene.Casting<LobbyScene>();
-        _scene.LobbyEvent.Register(EventType.Lobby.UPDATE_FLOOR, OnUpdateFloorIndex);
+        _scene.LobbyEvent.Register(EventType.Lobby.MOVE_ELEVATOR, OnElevatorFloorIndex);
     }
 
     private void OnDisable()
     {
-        _scene.LobbyEvent.UnRegister(EventType.Lobby.UPDATE_FLOOR, OnUpdateFloorIndex);
+        _scene.LobbyEvent.UnRegister(EventType.Lobby.MOVE_ELEVATOR, OnElevatorFloorIndex);
     }
 
     private void Start()
     {
         UpdateView();
-        UpdateFloor(_gridLayoutGrop.transform.childCount - 1, 0);
+        StartCoroutine(MoveElevator(_gridLayoutGrop.transform.childCount - 1, 0));
     }
 
     private void Update()
@@ -74,7 +74,7 @@ public class ScrollViewController : MonoBehaviour
         _gridLayoutGrop.padding = new RectOffset(paddingH, paddingH, paddingV, paddingV);
     }
 
-    private void UpdateFloor(int floorIndex, float time)
+    private void UpdateElevator(int floorIndex, float time)
     {   
         float height = _gridLayoutGrop.cellSize.y + _gridLayoutGrop.spacing.y;
         float destY = floorIndex * height;
@@ -88,17 +88,26 @@ public class ScrollViewController : MonoBehaviour
 		_animationCurve = new AnimationCurve(keyFrame1, keyFrame2);
 
         _prevfloorIndex = floorIndex;
-        _scene.LobbyEvent.Send(EventType.Lobby.BEGIN_ELEVATOR, this);
         _isAnimating = true;
     }
 
-    private void OnUpdateFloorIndex(object sender, object[] args)
+    private void OnElevatorFloorIndex(object sender, object[] args)
     {
         int index = (int)args[0];
         float time = Mathf.Abs(_prevfloorIndex - index) * 0.2f;
         if(_prevfloorIndex != index)
         {
-            UpdateFloor(index, time);
+            StartCoroutine(MoveElevator(index, time));
         }
+    }
+
+    private IEnumerator MoveElevator(int floorIndex, float time)
+    {
+        if(_isAnimating) yield break;
+
+        _scene.LobbyEvent.Send(EventType.Lobby.BEGIN_ELEVATOR, this);
+        yield return new WaitForSeconds(0.3f);
+        
+        UpdateElevator(floorIndex, time);
     }
 }

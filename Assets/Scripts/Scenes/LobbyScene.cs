@@ -14,8 +14,8 @@ public class LobbyScene : SceneDirector.Scene
 		LobbyEvent.Produceed();
 	}
 
-	public void OnClickFloorButton(int index)
+	public void OnClickElevatorButton(int index)
 	{
-		this.LobbyEvent.Send(EventType.Lobby.UPDATE_FLOOR, this, index);
+		this.LobbyEvent.Send(EventType.Lobby.MOVE_ELEVATOR, this, index);
 	}
 }

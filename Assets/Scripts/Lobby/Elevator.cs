@@ -40,11 +40,13 @@ public class Elevator : MonoBehaviour
 	private void OnEnableSubMenu(object sender, object[] args)
 	{
 		int subIndex = (int)args[0];
+		
 		for (int i = 0; i < _subMenuList.Count; i++)
 		{
-			_subMenuList[i].SetActive(false);
+			if(i == subIndex) _subMenuList[i].SetActive(true);
+			else _subMenuList[i].SetActive(false);
 		}
-		_subMenuList[subIndex].SetActive(true);
+		
 		subMenuButtons_.SetActive(true);
 		doorAnimator_.SetBool("isOpen", true);
 	}
