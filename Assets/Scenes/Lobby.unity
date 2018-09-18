@@ -1782,7 +1782,7 @@ GameObject:
   - component: {fileID: 463051437}
   - component: {fileID: 463051438}
   m_Layer: 5
-  m_Name: Right
+  m_Name: MainMenu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1914,7 +1914,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 394920047}
-        m_MethodName: OnClickFloorButton
+        m_MethodName: OnClickElevatorButton
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2149,7 +2149,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 394920047}
-        m_MethodName: OnClickFloorButton
+        m_MethodName: OnClickElevatorButton
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2704,7 +2704,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 394920047}
-        m_MethodName: OnClickFloorButton
+        m_MethodName: OnClickElevatorButton
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3980,7 +3980,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 394920047}
-        m_MethodName: OnClickFloorButton
+        m_MethodName: OnClickElevatorButton
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4172,7 +4172,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 394920047}
-        m_MethodName: OnClickFloorButton
+        m_MethodName: OnClickElevatorButton
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5600,7 +5600,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 394920047}
-        m_MethodName: OnClickFloorButton
+        m_MethodName: OnClickElevatorButton
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -6077,7 +6077,7 @@ GameObject:
   - component: {fileID: 1780428870}
   - component: {fileID: 1780428873}
   m_Layer: 5
-  m_Name: Scroll View
+  m_Name: Building
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6175,7 +6175,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1780428868}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fca41172c48f74cb794c55d08cd93d3a, type: 3}
+  m_Script: {fileID: 11500000, guid: e05ac0756a7594033be0face43255c75, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1788791742
@@ -6921,7 +6921,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 394920047}
-        m_MethodName: OnClickFloorButton
+        m_MethodName: OnClickElevatorButton
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -7392,7 +7392,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 394920047}
-        m_MethodName: OnClickFloorButton
+        m_MethodName: OnClickElevatorButton
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
