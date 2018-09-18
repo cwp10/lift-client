@@ -13,4 +13,4 @@
 }
 
 public class GlobalEventHandler : EventHandler<EventType.Global> { }
-public class LobbyEventHandler : EventHandler<EventType.Lobby> {}
+public class LobbyEventHandler : EventHandler<EventType.Lobby> { }

@@ -8,7 +8,7 @@ public class Building : MonoBehaviour
 {
     private ScrollRect _scrollRect = null;
     private RectTransform _rectTransform = null;
-    private GridLayoutGroup _gridLayoutGrop = null;   
+    private GridLayoutGroup _gridLayoutGrop = null;
     private Vector2 _destPosition = Vector2.zero;
     private Vector2 _initialPosition = Vector2.zero;
     private AnimationCurve _animationCurve = null;
@@ -48,10 +48,10 @@ public class Building : MonoBehaviour
             UpdateView();
         }
     }
-    
+
     private void LateUpdate()
     {
-        if(!_isAnimating) return;
+        if (!_isAnimating) return;
 
         if (Time.time >= _animationCurve.keys[_animationCurve.length - 1].time)
         {
@@ -75,7 +75,7 @@ public class Building : MonoBehaviour
     }
 
     private void UpdateElevator(int floorIndex, float time)
-    {   
+    {
         float height = _gridLayoutGrop.cellSize.y + _gridLayoutGrop.spacing.y;
         float destY = floorIndex * height;
 
@@ -84,8 +84,8 @@ public class Building : MonoBehaviour
         _scrollRect.StopMovement();
 
         Keyframe keyFrame1 = new Keyframe(Time.time, 0.0f, 0.0f, 1.0f);
-		Keyframe keyFrame2 = new Keyframe(Time.time + time, 1.0f, 0.0f, 0.0f);
-		_animationCurve = new AnimationCurve(keyFrame1, keyFrame2);
+        Keyframe keyFrame2 = new Keyframe(Time.time + time, 1.0f, 0.0f, 0.0f);
+        _animationCurve = new AnimationCurve(keyFrame1, keyFrame2);
 
         _prevfloorIndex = floorIndex;
         _isAnimating = true;
@@ -95,7 +95,7 @@ public class Building : MonoBehaviour
     {
         int index = (int)args[0];
         float time = Mathf.Abs(_prevfloorIndex - index) * 0.2f;
-        if(_prevfloorIndex != index)
+        if (_prevfloorIndex != index)
         {
             StartCoroutine(MoveElevator(index, time));
         }
@@ -103,7 +103,7 @@ public class Building : MonoBehaviour
 
     private IEnumerator MoveElevator(int floorIndex, float time)
     {
-        if(_isAnimating) yield break;
+        if (_isAnimating) yield break;
 
         _scene.LobbyEvent.Send(EventType.Lobby.BEGIN_ELEVATOR, this);
         yield return new WaitForSeconds(0.3f);

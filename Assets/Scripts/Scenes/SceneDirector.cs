@@ -13,10 +13,10 @@ public class SceneDirector : UnitySingleton<SceneDirector>
     /// <para>상속받은 클래스에서 MonoBehaviour 클래스의 메소드를 직접 재정의하지 말자.</para>
     public abstract class Scene : UnityBehaviour
     {
-        public virtual void OnAwakeScene() {}
-        public virtual void OnStartScene() {}
-        public virtual void OnUpdateScene() {}
-        public virtual void OnDestroyScene() {}
+        public virtual void OnAwakeScene() { }
+        public virtual void OnStartScene() { }
+        public virtual void OnUpdateScene() { }
+        public virtual void OnDestroyScene() { }
 
         private void Awake()
         {
