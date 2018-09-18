@@ -27,12 +27,12 @@ public class Building : MonoBehaviour
     private void OnEnable()
     {
         _scene = SceneDirector.Instance.CurrentScene.Casting<LobbyScene>();
-        _scene.LobbyEvent.Register(EventType.Lobby.MOVE_ELEVATOR, OnElevatorFloorIndex);
+        _scene.LobbyEvent.Register(EventType.Lobby.MOVE_ELEVATOR, OnElevatorFloor);
     }
 
     private void OnDisable()
     {
-        _scene.LobbyEvent.UnRegister(EventType.Lobby.MOVE_ELEVATOR, OnElevatorFloorIndex);
+        _scene.LobbyEvent.UnRegister(EventType.Lobby.MOVE_ELEVATOR, OnElevatorFloor);
     }
 
     private void Start()
@@ -91,7 +91,7 @@ public class Building : MonoBehaviour
         _isAnimating = true;
     }
 
-    private void OnElevatorFloorIndex(object sender, object[] args)
+    private void OnElevatorFloor(object sender, object[] args)
     {
         int index = (int)args[0];
         float time = Mathf.Abs(_prevfloorIndex - index) * 0.2f;
@@ -107,7 +107,7 @@ public class Building : MonoBehaviour
 
         _scene.LobbyEvent.Send(EventType.Lobby.BEGIN_ELEVATOR, this);
         yield return new WaitForSeconds(0.3f);
-        
+
         UpdateElevator(floorIndex, time);
     }
 }
